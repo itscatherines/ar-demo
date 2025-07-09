@@ -45,22 +45,23 @@
 
   <h1>3D Modell in AR ansehen</h1>
 
-  <model-viewer
-    id = "model"
-    src= "flower_with_pink_peta_0323100330_texture.glb"
-    ios-src= "flower_with_pink_peta_0323102951_texture.usdz"
-    alt= "Ein 3D-Modell"
-    ar
-    ar-modes= "scene-viewer quick-look webxr"
-    camera-controls
-    autoplay
-    shadow-intensity= "1"
-    environment-image= "neutral"
-  >
-    < button slot= "ar-button" class="ar-button">
-      In AR ansehen
-    </button>
-  </model-viewer>
+ <model-viewer
+  id="model"
+  src="assets/dein-modell.glb"
+  ios-src="assets/dein-modell.usdz"
+  alt="Ein 3D-Modell"
+  ar
+  ar-modes="scene-viewer quick-look webxr"
+  camera-controls
+  autoplay
+  shadow-intensity="1"
+  environment-image="neutral"
+>
+  <button slot="ar-button" style="background: none; border: none; padding: 0; cursor: pointer;">
+    <img src="assets/ar-button.png" alt="AR starten" style="width: 100px; height: auto;">
+  </button>
+</model-viewer>
+
 
 </body>
 </html>

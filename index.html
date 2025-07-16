@@ -21,7 +21,7 @@
 
     header {
       width: 100%;
-      padding: 2rem 2rem 1rem; /* mehr seitliches Padding */
+      padding: 2rem 2rem 1rem;
       display: flex;
       justify-content: center;
       background-color: #000;
@@ -39,42 +39,24 @@
       text-align: center;
     }
 
-    .model-area {
-      display: flex;
-      align-items: center; /* vertikal zentriert */
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .ar-button-wrapper {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .ar-button-wrapper button {
-      all: unset;
-      cursor: pointer;
-    }
-
-    .ar-button-wrapper img {
-      width: 50px;
-      height: auto;
-    }
-
     model-viewer {
       width: 100%;
       max-width: 500px;
       height: 500px;
+      margin-top: 2rem;
     }
 
-    @media (max-width: 600px) {
-      .model-area {
-        flex-direction: column;
-      }
+    model-viewer::part(ar-button) {
+      all: unset;
+      display: flex;
+      justify-content: center;
+      margin: 1rem auto 0;
+      cursor: pointer;
+    }
+
+    model-viewer::part(ar-button) img {
+      width: 50px;
+      height: auto;
     }
   </style>
 </head>
@@ -86,46 +68,25 @@
 
   <h1>3D Modell in AR ansehen</h1>
 
-  <div class="model-area">
-    <!-- Linker Button, außerhalb aber funktional via slot -->
-    <div class="ar-button-wrapper">
-      <model-viewer
-        id="model"
-        src="assets/jubin_270.glb"
-        ios-src="assets/jubin_270.usdz"
-        alt="Ein 3D-Modell"
-        ar
-        ar-modes="scene-viewer quick-look webxr"
-        camera-controls
-        autoplay
-        shadow-intensity="1"
-        environment-image="neutral"
-        camera-target="0m 0m 0m"
-        camera-orbit="0deg 75deg auto"
-        ar-button
-        style="display: none" <!-- Unsichtbares Viewer-Element, nur für Button-Funktion -->
-      >
-        <button slot="ar-button" id="real-ar-button">
-          <!-- Sichtbares AR-Icon -->
-          <img src="assets/ar-sweep_pink.png" alt="AR starten" />
-        </button>
-      </model-viewer>
-    </div>
-
-    <!-- Hauptmodell ohne Button -->
-    <model-viewer
-      src="assets/jubin_270.glb"
-      ios-src="assets/jubin_270.usdz"
-      alt="Ein 3D-Modell"
-      camera-controls
-      autoplay
-      shadow-intensity="1"
-      environment-image="neutral"
-      camera-target="0m 0m 0m"
-      camera-orbit="0deg 75deg auto"
-    >
-    </model-viewer>
-  </div>
+  <model-viewer
+    src="assets/jubin_270.glb"
+    ios-src="assets/jubin_270.usdz"
+    alt="Ein 3D-Modell"
+    ar
+    ar-modes="scene-viewer quick-look webxr"
+    camera-controls
+    autoplay
+    shadow-intensity="1"
+    environment-image="neutral"
+    camera-target="0m 0m 0m"
+    camera-orbit="0deg 75deg auto"
+    ar-button
+  >
+    <!-- AR-Button: sichtbar, funktional -->
+    <button slot="ar-button">
+      <img src="assets/ar-sweep_pink.png" alt="AR starten" />
+    </button>
+  </model-viewer>
 
 </body>
 </html>

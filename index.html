@@ -39,22 +39,25 @@
       text-align: center;
     }
 
-    model-viewer {
+    .model-wrapper {
       width: 100%;
       max-width: 500px;
-      height: 500px;
-      margin-top: 2rem;
       position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
+    model-viewer {
+      width: 100%;
+      height: 500px;
+    }
+
+    /* AR-Button innerhalb model-viewer */
     model-viewer::part(ar-button) {
-      position: absolute;
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      background: none;
-      border: none;
-      padding: 0;
+      all: unset;
+      display: block;
+      margin-top: 1rem;
       cursor: pointer;
     }
 
@@ -70,26 +73,29 @@
     <img src="assets/header.png" alt="Logo" />
   </header>
 
-  <model-viewer
-    id="model"
-    src="assets/jubin_270.glb"
-    ios-src="assets/jubin_270.usdz"
-    alt="Ein 3D-Modell"
-    ar
-    ar-modes="scene-viewer quick-look webxr"
-    camera-controls
-    autoplay
-    shadow-intensity="1"
-    environment-image="neutral"
-    camera-target="0m 0m 0m"
-    camera-orbit="0deg 75deg auto"
-    ar-button
-    ar-button-mode="fullscreen"
-  >
-    <button slot="ar-button">
-      <img src="assets/ar-sweep_pink.png" alt="AR starten" />
-    </button>
-  </model-viewer>
+
+  <div class="model-wrapper">
+    <model-viewer
+      id="model"
+      src="assets/jubin_270.glb"
+      ios-src="assets/jubin_270.usdz"
+      alt="Ein 3D-Modell"
+      ar
+      ar-modes="scene-viewer quick-look webxr"
+      camera-controls
+      autoplay
+      shadow-intensity="1"
+      environment-image="neutral"
+      camera-target="0m 0m 0m"
+      camera-orbit="0deg 75deg auto"
+      ar-button
+    >
+      <!-- AR-Button sichtbar und funktional -->
+      <button slot="ar-button">
+        <img src="assets/ar-sweep_pink.png" alt="AR starten" />
+      </button>
+    </model-viewer>
+  </div>
 
 </body>
 </html>

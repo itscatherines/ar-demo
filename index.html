@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>AR Modell Demo</title>
 
-  <!-- model-viewer von Google -->
   <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
 
   <style>
@@ -30,7 +29,7 @@
       height: auto;
       display: block;
       object-fit: contain;
-      max-height: 250px; /* optional, anpassbar */
+      max-height: 250px;
     }
 
     h1 {
@@ -38,11 +37,34 @@
       text-align: center;
     }
 
-    model-viewer {
+    .model-container {
+      position: relative;
       width: 100%;
       max-width: 500px;
       height: 500px;
       margin-top: 2rem;
+    }
+
+    model-viewer {
+      width: 100%;
+      height: 100%;
+    }
+
+    .ar-button {
+      position: absolute;
+      top: 10px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      z-index: 10;
+    }
+
+    .ar-button img {
+      width: 80px;
+      height: auto;
     }
   </style>
 </head>
@@ -52,26 +74,31 @@
     <img src="assets/header.png" alt="Logo" />
   </header>
 
+  <h1>3D Modell in AR ansehen</h1>
 
-
-  <model-viewer
-    id="model"
-    src="aassets/jubin_-90.glb"
-    ios-src="assets/jubin.usdz"
-    alt="Ein 3D-Modell"
-    ar
-    ar-modes="scene-viewer quick-look webxr"
-    camera-controls
-    autoplay
-    shadow-intensity="1"
-    environment-image="neutral"
-    camera-target="0m 0m 0m"
-    camera-orbit="0deg 75deg auto"
-  >
-    <button slot="ar-button" style="background: none; border: none; padding: 0; cursor: pointer;">
-      <img src="assets/ar-sweep.png" alt="AR starten" style="width: 100px; height: auto;">
+  <div class="model-container">
+    <!-- AR Button oben mittig -->
+    <button class="ar-button" slot="ar-button">
+      <img src="assets/ar-sweep.png" alt="AR starten" />
     </button>
-  </model-viewer>
+
+    <!-- 3D Modell -->
+    <model-viewer
+      id="model"
+      src="assets/jubin_2.glb"
+      ios-src="assets/jubin.usdz"
+      alt="Ein 3D-Modell"
+      ar
+      ar-modes="scene-viewer quick-look webxr"
+      camera-controls
+      autoplay
+      shadow-intensity="1"
+      environment-image="neutral"
+      camera-target="0m 0m 0m"
+      camera-orbit="0deg 75deg auto"
+    >
+    </model-viewer>
+  </div>
 
 </body>
 </html>

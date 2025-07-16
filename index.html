@@ -21,15 +21,17 @@
 
     header {
       width: 100%;
+      padding: 2rem 1rem 1rem;
+      display: flex;
+      justify-content: center;
       background-color: #000;
     }
 
     header img {
       width: 100%;
+      max-width: 600px;
       height: auto;
-      display: block;
       object-fit: contain;
-      max-height: 250px;
     }
 
     h1 {
@@ -37,20 +39,15 @@
       text-align: center;
     }
 
-    .model-container {
-      position: relative;
+    model-viewer {
       width: 100%;
       max-width: 500px;
       height: 500px;
       margin-top: 2rem;
+      position: relative;
     }
 
-    model-viewer {
-      width: 100%;
-      height: 100%;
-    }
-
-    .ar-button {
+    model-viewer::part(ar-button) {
       position: absolute;
       top: 10px;
       left: 50%;
@@ -59,10 +56,9 @@
       border: none;
       padding: 0;
       cursor: pointer;
-      z-index: 10;
     }
 
-    .ar-button img {
+    model-viewer::part(ar-button) img {
       width: 80px;
       height: auto;
     }
@@ -74,29 +70,26 @@
     <img src="assets/header.png" alt="Logo" />
   </header>
 
-  <div class="model-container">
-    <!-- AR Button oben mittig -->
-    <button class="ar-button" slot="ar-button">
-      <img src="assets/ar-sweep_pink.png" alt="AR starten" />
+  <model-viewer
+    id="model"
+    src="assets/jubin_270.glb"
+    ios-src="assets/jubin_270.usdz"
+    alt="Ein 3D-Modell"
+    ar
+    ar-modes="scene-viewer quick-look webxr"
+    camera-controls
+    autoplay
+    shadow-intensity="1"
+    environment-image="neutral"
+    camera-target="0m 0m 0m"
+    camera-orbit="0deg 75deg auto"
+    ar-button
+    ar-button-mode="fullscreen"
+  >
+    <button slot="ar-button">
+      <img src="assets/ar-sweep.png" alt="AR starten" />
     </button>
-
-    <!-- 3D Modell -->
-    <model-viewer
-      id="model"
-      src="assets/jubin_270.glb"
-      ios-src="assets/jubin_270.usdz"
-      alt="Ein 3D-Modell"
-      ar
-      ar-modes="scene-viewer quick-look webxr"
-      camera-controls
-      autoplay
-      shadow-intensity="1"
-      environment-image="neutral"
-      camera-target="0m 0m 0m"
-      camera-orbit="0deg 75deg auto"
-    >
-    </model-viewer>
-  </div>
+  </model-viewer>
 
 </body>
 </html>

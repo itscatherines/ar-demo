@@ -16,24 +16,26 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #000; /* Hintergrund schwarz */
+      background-color: #000;
       color: #fff;
     }
 
     header {
       width: 100%;
-      padding: 1rem;
-      display: flex;
-      justify-content: center;
       background-color: #000;
     }
 
     header img {
-      max-height: 80px;
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: contain;
+      max-height: 250px; /* optional, anpassbar */
     }
 
     h1 {
       margin-top: 1rem;
+      text-align: center;
     }
 
     model-viewer {
@@ -50,7 +52,7 @@
     <img src="assets/header.png" alt="Logo" />
   </header>
 
-  <h1>3D Modell in AR ansehen</h1>
+
 
   <model-viewer
     id="model"

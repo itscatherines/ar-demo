@@ -26,7 +26,7 @@
     header {
       width: 100%;
       background-color: #000;
-      padding: 2rem 1.5rem 1rem; /* Abstand oben und seitlich */
+      padding: 2rem 1.5rem 1rem;
     }
 
     header img {
@@ -42,11 +42,23 @@
       margin-top: 1rem;
     }
 
+    a {
+      color: white;
+      font-weight: bold;
+      font-size: 1.2rem;
+      text-decoration: none;
+      margin: 1rem 0;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
     model-viewer {
       width: 100%;
       max-width: 500px;
       height: 500px;
-      margin-top: 2rem;
+      margin-top: 1rem;
     }
 
     .ar-button {
@@ -72,7 +84,8 @@
   </header>
 
   <!-- DJ INSTA Link oben -->
-  <a href="https://www.instagram.com/dein_dj_name" target="_blank">🎧 DJ INSTA</a
+  <a href="https://www.instagram.com/dein_dj_name" target="_blank">🎧 DJ INSTA</a>
+
   <model-viewer
     id="modelViewer"
     src="assets/flucc1.glb"
@@ -89,12 +102,12 @@
   >
   </model-viewer>
 
-  <!-- Funktionaler AR-Button außerhalb von model-viewer -->
+  <!-- Funktionaler AR-Button -->
   <button class="ar-button" onclick="document.getElementById('modelViewer').activateAR()">
     <img src="assets/ar-sweep_pink.png" alt="AR starten" />
   </button>
 
-   <!-- Tickets kaufen Link unten -->
+  <!-- Tickets kaufen Link unten -->
   <a href="https://www.ticketseite.de/tickets" target="_blank">🎟️ Tickets kaufen</a>
 
 </body>
